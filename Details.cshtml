@@ -1,0 +1,55 @@
+﻿@model ASPCORECRUDECODEFIRST.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4>Employee Details </h4>
+    <hr />
+    <dl class="row">
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EMP_NAME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EMP_NAME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Emp_Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Emp_Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EMP_Gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EMP_Gender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DOJ)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DOJ)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DESIGNATION)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DESIGNATION)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SALARY)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SALARY)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.EMP_ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

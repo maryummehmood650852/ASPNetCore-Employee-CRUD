@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ASPCORECRUDECODEFIRST.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees  List </h1>
+@{
+    var SuccessMessage = TempData["SuccessMessage "] as string;
+}
+@if (!string.IsNullOrEmpty(SuccessMessage))
+{
+    <script>
+    alert("@SuccessMessage")
+    </script>
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@if(!Model.Any())
+{ <div class="alert alert-warning text-center">
+    No Record Found
+</div>
+
+}
+else
+{  
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EMP_NAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Emp_Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EMP_Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DOJ)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DESIGNATION)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SALARY)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMP_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Emp_Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMP_Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOJ)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DESIGNATION)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SALARY)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EMP_ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.EMP_ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.EMP_ID">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        function confirmDelete(empId)
+        {
+            if (confirm("Are You Sure You Want To Delete This Employee?"))
+            {
+                window.location.href = `/Employee/Delete/' + empId`;
+            }
+        }
+    </script>
+
+
+    
+}
